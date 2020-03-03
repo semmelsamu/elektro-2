@@ -63,6 +63,26 @@ void wait(){ // Wartet bis man im Serial auf Senden drückt
   while(Serial.available()==0) {} while(Serial.available()>0) { Serial.read(); }
 }
 
+// SINGLETON TEMPLATE
+
+template <class T>
+class Singleton
+{
+  protected:
+
+    static T *singleton;
+
+  public:
+
+    inline static T* Get()
+    {
+      if(!singleton)
+        singleton = new T;
+
+      return singleton;
+    }
+};
+
 // SENSORENKLASSEN
 
 class Sensor_DS18B20 {
@@ -168,7 +188,7 @@ class Sensor_DHT22 {
 
 // RTC KLASSE
 
-class Rtc {
+class Rtc : public Singleton<Rtc> {
 
   private:
 
@@ -235,7 +255,7 @@ class Gps {
 
 // SIM KLASSE
 
-class Sim {
+class Sim : public Singleton<Sim> {
 
   public:
 
@@ -250,27 +270,25 @@ class Sim {
 
 // SD KLASSE
 
-class Sd {
+class Sd : public Singleton<Sd> {
 
   private:
 
     File file;
     String folderId;
     int bufferCounter;
-    Rtc * rtc;
 
   public:
 
     Sd() {
       SD.begin(PIN_SD);
-      rtc = new Rtc();
-      folderId = rtc->getUnixTime();
+      folderId = Rtc::Get()->getUnixTime();
       bufferCounter = 0;
     }
 
     void writeSensorData(String sensor, String data) {
 
-      String currentTime = rtc->getUnixTime();
+      String currentTime = Rtc::Get()->getUnixTime();
 
       file = SD.open(folderId+"\\"+sensor+".sns", FILE_WRITE);
       if(file) {  
@@ -314,7 +332,7 @@ class Sd {
 
 // MAIN
 
-class Main {
+class Main : public Singleton<Main> {
   
   private:
     
@@ -326,9 +344,6 @@ class Main {
     Sensor_DHT22 * S_DHT;
 
     Gps * GPS;
-    Sim * sim;
-    Sd * sd;
-    Rtc * rtc;
     
   public:
   
@@ -344,9 +359,6 @@ class Main {
       S_DHT = new Sensor_DHT22();
 
       GPS = new Gps();
-      sim = new Sim();
-      sd = new Sd();
-      rtc = new Rtc();
 
       Serial.println("[Main] Init complete."); 
     }
@@ -367,26 +379,26 @@ class Main {
         */
 
         Serial.println("[Main] Reading and writing sensor data to sd and buffer...");
-        sd->writeSensorData("DS18B20_TEMP", String(DS18B20->getTemperature()));
-        sd->writeSensorData("DUST", String(Dust->getConcentration()));
-        sd->writeSensorData("UV", String(Uv->getUv()));
-        sd->writeSensorData("GY_X", String(GY61->getX()));
-        sd->writeSensorData("GY_Y", String(GY61->getY()));
-        sd->writeSensorData("GY_Z", String(GY61->getZ()));
-        sd->writeSensorData("CJMCU_NOX", String(CJMCU->getNox()));
-        sd->writeSensorData("CJMCU_RED", String(CJMCU->getNox()));
-        sd->writeSensorData("DHT_TEMP", String(S_DHT->getTemperature()));
-        sd->writeSensorData("DHT_HUM", String(S_DHT->getHumidity()));
-        sd->writeSensorData("GPS_LONG", String(GPS->getLongitude()));
-        sd->writeSensorData("GPS_LAT", String(GPS->getLatitude()));
+        Sd::Get()->writeSensorData("DS18B20_TEMP", String(DS18B20->getTemperature()));
+        Sd::Get()->writeSensorData("DUST", String(Dust->getConcentration()));
+        Sd::Get()->writeSensorData("UV", String(Uv->getUv()));
+        Sd::Get()->writeSensorData("GY_X", String(GY61->getX()));
+        Sd::Get()->writeSensorData("GY_Y", String(GY61->getY()));
+        Sd::Get()->writeSensorData("GY_Z", String(GY61->getZ()));
+        Sd::Get()->writeSensorData("CJMCU_NOX", String(CJMCU->getNox()));
+        Sd::Get()->writeSensorData("CJMCU_RED", String(CJMCU->getNox()));
+        Sd::Get()->writeSensorData("DHT_TEMP", String(S_DHT->getTemperature()));
+        Sd::Get()->writeSensorData("DHT_HUM", String(S_DHT->getHumidity()));
+        Sd::Get()->writeSensorData("GPS_LONG", String(GPS->getLongitude()));
+        Sd::Get()->writeSensorData("GPS_LAT", String(GPS->getLatitude()));
         
         Serial.println("[Main] Sending buffer data...");
         int i = 0;
-        rtc->resetTimer();
-        while(rtc->secondsPassed()<10 && sd->bufferAvailable())
+        Rtc::Get()->resetTimer();
+        while(Rtc::Get()->secondsPassed()<10 && Sd::Get()->bufferAvailable())
         {
-          if(sim->writeData(sd->readBuffer())) 
-            sd->nextBuffer(); 
+          if(Sim::Get()->writeData(Sd::Get()->readBuffer())) 
+            Sd::Get()->nextBuffer(); 
           }
         }
       }
@@ -398,6 +410,5 @@ void setup() {
 }
 
 void loop() {
-  Main * main = new Main();
-  main->loop();
+  Main::Get()->loop();
 }
