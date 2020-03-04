@@ -14,6 +14,8 @@
 #include <SPI.h>
 #include <SD.h>
 
+// DEFINES
+
 /* DHT22 */
 #include "DHT.h"
 
@@ -44,8 +46,12 @@
 /* DHT22 */
 #define PIN_DHT 4
 
+/* Strommesser */
+#define PIN_STROM A14
+
 /* SD */
 #define PIN_SD 53
+#define STROM_WIEDERSTAND 0.1
 
 // SETUPS FÜR SENSOREN
 
@@ -164,6 +170,14 @@ class Sensor_DHT22 {
     float getTemperature() { return dht.readTemperature(); }
     float getHumidity() { return dht.readHumidity(); }
     
+};
+
+class Sensor_Strom {
+
+  public: 
+
+    float getStromstaerke() { return ((analogRead(PIN_STROM)/1024*5)/50*STROM_WIEDERSTAND); }
+  
 };
 
 // RTC KLASSE
@@ -324,6 +338,7 @@ class Main {
     Sensor_GY61 * GY61;
     Sensor_CJMCU * CJMCU;
     Sensor_DHT22 * S_DHT;
+    Sensor_Strom * strom;
 
     Gps * GPS;
     Sim * sim;
@@ -342,6 +357,7 @@ class Main {
       GY61 = new Sensor_GY61();
       CJMCU = new Sensor_CJMCU(0);
       S_DHT = new Sensor_DHT22();
+      strom = new Sensor_Strom();
 
       GPS = new Gps();
       sim = new Sim();
@@ -379,6 +395,7 @@ class Main {
         sd->writeSensorData("DHT_HUM", String(S_DHT->getHumidity()));
         sd->writeSensorData("GPS_LONG", String(GPS->getLongitude()));
         sd->writeSensorData("GPS_LAT", String(GPS->getLatitude()));
+        sd->writeSensorData("STROM", String(strom->getStromstaerke()));
         
         Serial.println("[Main] Sending buffer data...");
         int i = 0;
