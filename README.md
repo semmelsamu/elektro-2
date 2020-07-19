@@ -1,16 +1,5 @@
-# Daten vom Elektro2-Team
+# psem-elektro2
 
-Programme, Tabellen, Codeschnipsel usw.
+## What is this?
 
-## Alle Sensoren
-
-- Messung - Name des Sensors - Status
-- Temperatur - DS18B20 - bestellt
-- Temperatur und Feuchtigkeit - DHT22 - bestellt
-- Beschleunigung - GY61 - läuft
-- Stub-Sensor -(Erweiterungs-Platine Dust) - läuft 
-- Hall-Magnetfeld- IDUINO - läuft(aber unnötig)
-- UV-Sensor -Waveshare DC3.3-5V- läuft 
-- Kohlenmonoxid-Stickstoff-Sauerstoff CJMCU-4541- läuft
-- Luftdruck & Temp. -BMP 280- in Arbeit
-- GSM/GPS/Speichershield - MC60E- in Arbeit
+This is the project repo of our school course. We want to build and code a weather balloon and let it fly. While in the air, the weather balloon will collect sensor data and send it down to a server. It will also save the data local on a sd card.
