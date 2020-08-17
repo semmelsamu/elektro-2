@@ -4,6 +4,3 @@ void setup() {
     setup_rtc();
 }
 
-void loop() {
-    
-}

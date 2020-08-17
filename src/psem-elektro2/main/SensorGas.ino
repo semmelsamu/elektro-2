@@ -1,8 +1,21 @@
-class SensorCJMCU {
+/*
+ * SensorGas
+ * This class reads out carbon monoxide, nitrogen and oxygen values with the CJMCU-4541 sensor.
+ * 
+ * Circuit:
+ * CJMCU-4541 sensor connected to Arduino Mega via pins:
+ * - GND: GND
+ * - VCC: 5V
+ * - PRE: default 3
+ * - NOx: default A12
+ * - RED: default A13
+*/
+
+class SensorGas {
 
   public:
 
-    Sensor_CJMCU(int heat = 10000) {
+    SensorGas(int heat = 10000) {
       pinMode(PIN_CJMCU_PRE, OUTPUT);
 
       Serial.println("[CJMCU] Vorheizen...");
@@ -12,7 +25,7 @@ class SensorCJMCU {
       Serial.println("[CJMCU] Vorheizen beendet");
     }
 
-    float getNox() { return analogRead(PIN_CJMCU_NOX); }
-    float getRed() { return analogRead(PIN_CJMCU_NOX); }
+    float get_nox() { return analogRead(PIN_CJMCU_NOX); }
+    float get_red() { return analogRead(PIN_CJMCU_NOX); }
     
 };

@@ -22,9 +22,9 @@ class SensorDust {
   
   public:
   
-    SensorDust(out_pin=11)
+    SensorDust(int out_pin=11)
     {
-      pinMode(PIN_DUST,INPUT);
+      pinMode(out_pin,INPUT);
       starttime = millis();
     }
 
