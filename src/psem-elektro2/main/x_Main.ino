@@ -7,11 +7,11 @@ class Main {
     
     SensorTemperatureDS * DS18B20;
     SensorDust * Dust;
-    Sensor_Uv * Uv;
+    SensorUv * Uv;
     Sensor_GY61 * GY61;
-    Sensor_CJMCU * CJMCU;
+    SensorCJMCU * CJMCU;
     Sensor_DHT22 * S_DHT;
-    Sensor_Strom * strom;
+    SensorStrom * strom;
 
     Gps * GPS;
     Sim * sim;
@@ -25,11 +25,11 @@ class Main {
       
       DS18B20 = new SensorTemperatureDS();
       Dust = new SensorDust();
-      Uv = new Sensor_Uv();
+      Uv = new SensorUv();
       GY61 = new Sensor_GY61();
-      CJMCU = new Sensor_CJMCU(0);
+      CJMCU = new SensorCJMCU();
       S_DHT = new Sensor_DHT22();
-      strom = new Sensor_Strom();
+      strom = new SensorStrom();
 
       GPS = new Gps();
       sim = new Sim();
