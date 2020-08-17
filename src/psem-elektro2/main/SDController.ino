@@ -3,6 +3,9 @@
  * This is a controller class for the sd module. It saves various log values in 
  * dedicated files and in a buffer, which can be red as well.
  * 
+ * See:
+ * https://www.arduino.cc/en/reference/SD
+ * 
  * Circuit:
  * SD Card Module connected to a Arduino Mega via Pins:
  * - GND
@@ -25,7 +28,7 @@ class SDController
 
     public:
         
-        SDController(int cs_pin=50)
+        SDController(int cs_pin=53)
         {
             Serial.print("Initializing SD card...");
         
