@@ -5,7 +5,7 @@ class Main {
   
   private:
     
-    Sensor_DS18B20 * DS18B20;
+    SensorTemperatureDS * DS18B20;
     SensorDust * Dust;
     Sensor_Uv * Uv;
     Sensor_GY61 * GY61;
@@ -23,7 +23,7 @@ class Main {
     {
       Serial.println("[Main] Init...");
       
-      DS18B20 = new Sensor_DS18B20();
+      DS18B20 = new SensorTemperatureDS();
       Dust = new SensorDust();
       Uv = new Sensor_Uv();
       GY61 = new Sensor_GY61();
@@ -87,5 +87,3 @@ class Main {
       }
    }
 };
-
-

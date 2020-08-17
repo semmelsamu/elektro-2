@@ -38,8 +38,7 @@
 ////////// INCLUDES //////////
 
 /* DS18B20 */
-#include <OneWire.h> 
-#include <DallasTemperature.h>
+
 
 /* SD-Karte */
 #include <SPI.h>
@@ -55,8 +54,7 @@
 ////////// SETUPS FÜR SENSOREN //////////
 
 /* DS18B20 */
-OneWire oneWire(PIN_DS18B20); 
-DallasTemperature sensors(&oneWire);
+
 
 /* DHT22 */
 
@@ -70,22 +68,7 @@ void wait(){ // Wartet bis man im Serial auf Senden drückt
 
 ////////// SENSORENKLASSEN //////////
 
-class Sensor_DS18B20 {
-  
-  public:
-  
-    Sensor_DS18B20()
-    {
-      sensors.begin();
-    }
-  
-    float getTemperature()
-    {
-      sensors.requestTemperatures();
-      return sensors.getTempCByIndex(0);
-    }
-  
-};
+
 
 
 
@@ -283,5 +266,3 @@ class Sim {
     }
   
 };
-
-
