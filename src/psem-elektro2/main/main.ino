@@ -1,16 +1,16 @@
 /**
- * Main Arduino Code.
- * Made for the stratospheric balloon project "PROJECT JUMBO"
+ * Main Arduino code.
+ * This whole project is made for the stratospheric balloon project "PROJECT JUMBO"
  * By Samuel Kroiß
  * Contributors: Samuel Kroiß, David Schäffler, Regina Schmid, Benedikt Rosenstetter
  * Copyright (C) 2020.
 **/
 
 /*
+ * main
  * This file is dedicated for configuring the pins of the Arduino.
- */
+*/
 
- 
 #define PIN_ABORT_LOOP 30
 
 /* DS18B20 */
@@ -39,7 +39,8 @@
 #define PIN_STROM A14
 
 /* SD */
-#define PIN_SD 53
+#define PIN_SD_CHIPSELECT 53
 
 /* Strom */
 #define STROM_WIEDERSTAND 0.1
+
