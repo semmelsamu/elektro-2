@@ -43,4 +43,3 @@
 
 /* Strom */
 #define STROM_WIEDERSTAND 0.1
-
