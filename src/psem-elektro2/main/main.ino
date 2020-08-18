@@ -8,11 +8,9 @@
 
 /*
  * main
- * This file is dedicated for configuring the pins of the Arduino.
+ * This is the config file.
 */
 
-/* DS18B20 */
-#define PIN_DS18B20 2
 
-/* DHT22 */
+#define PIN_DS18B20 2
 #define PIN_DHT 4

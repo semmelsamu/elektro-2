@@ -16,7 +16,12 @@
  * - CS (default: 53)
 */
 
+// If SPI is already included, we skip the include. Otherwise, a compiling error would occur
+#ifndef __SPI
+#define __SPI
 #include <SPI.h>
+#endif
+
 #include <SD.h>
 
 class SDController
