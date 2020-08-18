@@ -15,31 +15,33 @@
 
 class SensorDust {
 
-  private:
+    private:
 
-    unsigned long duration, starttime, sampletime_ms = 2000, lowpulseoccupancy = 0;
-    float ratio = 0, concentration = 0;
+        unsigned long duration, starttime, sampletime_ms = 2000, lowpulseoccupancy = 0;
+        float ratio = 0, concentration = 0;
+    
+        int pin_output_1;
   
-  public:
+    public:
   
-    SensorDust(int out_pin=11)
-    {
-      pinMode(out_pin,INPUT);
-      starttime = millis();
-    }
-
-    float get_concentration()
-    {
-      duration = pulseIn(PIN_DUST, LOW);
-      lowpulseoccupancy = lowpulseoccupancy+duration;
-      if ((millis()-starttime) >= sampletime_ms)
-      {
-        ratio = lowpulseoccupancy/(sampletime_ms*10.0);
-        concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62;
-        lowpulseoccupancy = 0;
-        starttime = millis();
-      }
-      return concentration;
-    }
-  
+        SensorDust(int pin_output_1=11)
+        {
+            pin_output_1 = pin_output_1;
+            pinMode(pin_output_1,INPUT);
+            starttime = millis();
+        }
+    
+        float get_concentration()
+        {
+            duration = pulseIn(pin_output_1, LOW);
+            lowpulseoccupancy = lowpulseoccupancy+duration;
+            if ((millis()-starttime) >= sampletime_ms)
+            {
+                ratio = lowpulseoccupancy/(sampletime_ms*10.0);
+                concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62;
+                lowpulseoccupancy = 0;
+                starttime = millis();
+            }
+            return concentration;
+        }
 };

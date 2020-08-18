@@ -28,11 +28,11 @@ class SDController
 
     public:
         
-        SDController(int cs_pin=53)
+        SDController(int pin_cs=53)
         {
             Serial.print("Initializing SD card...");
         
-            if (!SD.begin(cs_pin)) {
+            if (!SD.begin(pin_cs)) {
                 Serial.println("Card failed, or not present");
                 // don't do anything more:
                 while (1);
@@ -96,4 +96,3 @@ class SDController
             return 1;
         }
 };
-

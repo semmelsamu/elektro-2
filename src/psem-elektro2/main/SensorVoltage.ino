@@ -1,8 +1,8 @@
-class SensorStrom {
+/*
+ * SensorVoltage
+ * This class reads the adjacent voltage from the Arduino with a selfmade circuit.
+*/
 
-  public: 
-
-    float getStromstaerke() { return ((analogRead(PIN_STROM)/1024*5)/50*STROM_WIEDERSTAND); }
-    float getSpannung() { return 0.0f; }
-  
+class SensorVoltage {
+    
 };
