@@ -3,7 +3,6 @@
  * This whole project is made for the stratospheric balloon project "PROJECT JUMBO"
  * By Samuel Kroiß
  * Contributors: Samuel Kroiß, David Schäffler, Regina Schmid, Benedikt Rosenstetter
- * Copyright (C) 2020.
 **/
 
 /*
