@@ -7,7 +7,10 @@
  * 
  * Circuit:
  * DHT22 connected to Arduino Mega via pins:
- * - VCC: 5V
+ * - VCC: Transistor:
+ *   - Collector: 5V of Arduino
+ *   - Base: pin_power_reset - default 7
+ *   - Emitter: VCC of DHT
  * - Data: default 4
  * - GND: GND
  * - (GND: GND)
@@ -24,7 +27,7 @@ class SensorHumidityTemperature {
 
     public:
 
-        SensorHumidityTemperature(int pin_power_reset)
+        SensorHumidityTemperature(int pin_power_reset=7)
         {
             pin_power_reset = pin_power_reset;
             nan_counter = 0;
