@@ -20,11 +20,13 @@ class SensorUV {
 
     public:
 
-        SensorUv(int pin_uv=A11) {
+        SensorUV(int pin_uv=A11) {
+            Serial.print("Setting up UV Sensor... ");
             pin_uv = pin_uv;
+            Serial.println("Done.");
         }
 
-        float getUv() {
+        float get_uv() {
             return analogRead(pin_uv);
         }
   

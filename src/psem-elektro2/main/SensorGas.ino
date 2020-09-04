@@ -4,6 +4,7 @@
  * 
  * See:
  * https://www.sgxsensortech.com/content/uploads/2014/08/0278_Datasheet-MiCS-4514-rev-16.pdf
+ * https://github.com/jo-seph/Mobisens/blob/master/mobisens7.6.ino
  * 
  * Circuit:
  * CJMCU-4541 sensor connected to Arduino Mega via pins:
@@ -22,18 +23,21 @@ class SensorGas {
 
     public:
 
-        SensorGas(int pin_preheat, int pin_nox, int pin_red, int heat_time = 10000) 
+        SensorGas(int pin_preheat=3, int pin_nox=A12, int pin_red=A13, int heat_time = 10000) 
         {
+            Serial.println("Setting up CJMCU... ");
+            
             pinMode(pin_preheat, OUTPUT);
-    
-            Serial.println("[CJMCU] Vorheizen...");
+
+            Serial.print("    Preheating... ");
             digitalWrite(pin_preheat, 1);
             delay(heat_time);
             digitalWrite(pin_preheat, 0);
-            Serial.println("[CJMCU] Vorheizen beendet");
+            
+            Serial.println("Done.");
         }
 
-        float get_nox() { return analogRead(pin_nox); }
-        float get_red() { return analogRead(pin_red); }
+        int get_nox() { return analogRead(pin_nox); }
+        int get_red() { return analogRead(pin_red); }
     
 };

@@ -26,9 +26,11 @@ class SensorDust {
   
         SensorDust(int pin_output_1=11)
         {
+            Serial.print("Setting up Dust Sensor... ");
             pin_output_1 = pin_output_1;
             pinMode(pin_output_1,INPUT);
             starttime = millis();
+            Serial.println("Done.");
         }
     
         float get_concentration()

@@ -49,13 +49,15 @@ class Timer {
 
 void setup_rtc()
 {
+    Serial.println("Setting up RTC...");
     // Initialize the RTC
     if (! rtc.begin()) {
-        Serial.println("[RTC] Couldn't find RTC");
+        Serial.println("    CRITICAL: Couldn't find RTC");
     }
 
     if (rtc.lostPower()) {
-        Serial.println("[RTC] RTC lost power, lets set the time!");
+        Serial.print("    RTC lost power, setting time... ");
         rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+        Serial.println("Done.");
     }
 }
