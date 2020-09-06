@@ -16,7 +16,6 @@ void setup() {
     Serial.println("\n\n\n*** Entering setup ***\n");
 
     setup_rtc();
-    setup_geiger_counter();
     
     remote_beeper = new RemoteBeeper();
     sd_controller = new SDController();

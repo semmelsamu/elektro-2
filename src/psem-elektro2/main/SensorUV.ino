@@ -7,7 +7,7 @@
  * 
  * Circuit:
  * UV Sensor connected to Arduino Mega via pins:
- * - AOUT: Analog, default: A11
+ * - AOUT: Analog, default: A15
  * - GND: GND
  * - VCC: 5V
 */
@@ -20,13 +20,13 @@ class SensorUV {
 
     public:
 
-        SensorUV(int pin_uv=A11) {
+        SensorUV(int pin_uv=A15) {
             Serial.print("Setting up UV Sensor... ");
             pin_uv = pin_uv;
             Serial.println("Done.");
         }
 
-        float get_uv() {
+        int get_uv() {
             return analogRead(pin_uv);
         }
   

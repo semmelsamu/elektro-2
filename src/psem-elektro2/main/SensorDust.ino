@@ -10,7 +10,7 @@
  * Grove Dust sensor connected to Arduino Mega via pins:
  * - GND: GND
  * - VCC: 5V
- * - OUTPUT(P1): default 11
+ * - OUTPUT(P1): default 42
 */
 
 class SensorDust {
@@ -24,7 +24,7 @@ class SensorDust {
   
     public:
   
-        SensorDust(int pin_output_1=11)
+        SensorDust(int pin_output_1=42)
         {
             Serial.print("Setting up Dust Sensor... ");
             pin_output_1 = pin_output_1;

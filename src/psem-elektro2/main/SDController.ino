@@ -38,7 +38,7 @@ class SDController
             Serial.print("Initializing SD card... ");
         
             if (!SD.begin(pin_cs)) {
-                Serial.println("Card failed, or not present");
+                Serial.println("Card failed, or not present. Exiting Program.");
                 // don't do anything more:
                 while (1);
             }

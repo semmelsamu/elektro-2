@@ -10,7 +10,7 @@
  * CJMCU-4541 sensor connected to Arduino Mega via pins:
  * - GND: GND
  * - VCC: 5V
- * - PRE: default 3
+ * - PRE: default 38
  * - NOx: default A12
  * - RED: default A13
 */
@@ -23,7 +23,7 @@ class SensorGas {
 
     public:
 
-        SensorGas(int pin_preheat=3, int pin_nox=A12, int pin_red=A13, int heat_time = 10) 
+        SensorGas(int pin_preheat=38, int pin_nox=A6, int pin_red=A7, int heat_time = 10) 
         {
             Serial.println("Setting up CJMCU... ");
             

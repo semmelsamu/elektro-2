@@ -13,7 +13,7 @@
  * - TXD: RX1
  * Speaker connected to Arduino Mega via Pins:
  * - GND
- * - PIN 11 (default)
+ * - PIN 46 (default)
 */
 
 class RemoteBeeper {
@@ -25,7 +25,7 @@ class RemoteBeeper {
 
     public:
 
-        RemoteBeeper(int speaker_pin=11) {
+        RemoteBeeper(int speaker_pin=46) {
             Serial.print("Setting up Speaker... ");
             speaker_pin = speaker_pin;
             Serial.println("Done.");

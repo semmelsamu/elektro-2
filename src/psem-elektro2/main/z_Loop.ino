@@ -22,6 +22,12 @@ void loop() {
     int gyroscope_z = sensor_gyroscope->get_z();
     Serial.println("gyroscope_z="+String(gyroscope_z));
 
+    float temperature = sensor_temperature->get_temperature();
+    Serial.println("sensor_temperature="+String(temperature));
+
+    int uv = sensor_uv->get_uv();
+    Serial.println("sensor_temperature="+String(uv));
+
     float timer_temperature = timer->get_temperature();
     Serial.println("timer_temperature="+String(timer_temperature));
 
@@ -34,6 +40,8 @@ void loop() {
     sd_controller->add_to_file("gyroscox.log", String(current_time)+":"+String(gyroscope_x));
     sd_controller->add_to_file("gyroscoy.log", String(current_time)+":"+String(gyroscope_y));
     sd_controller->add_to_file("gyroscoz.log", String(current_time)+":"+String(gyroscope_z));
+    sd_controller->add_to_file("dstemper.log", String(current_time)+":"+String(temperature));
+    sd_controller->add_to_file("uvintens.log", String(current_time)+":"+String(uv));
     sd_controller->add_to_file("timetemp.log", String(current_time)+":"+String(timer_temperature));
 
 

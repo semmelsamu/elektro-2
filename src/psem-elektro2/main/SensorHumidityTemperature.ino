@@ -9,16 +9,16 @@
  * DHT22 connected to Arduino Mega via pins:
  * - VCC: Transistor:
  *   - Collector: 5V of Arduino
- *   - Base: pin_power_reset - default 7
+ *   - Base: pin_power_reset - default 33
  *   - Emitter: VCC of DHT
- * - Data: default 4
+ * - Data: default 34
  * - GND: GND
  * - (GND: GND)
 */
 
 #include "DHT.h"
 
-DHT dht(PIN_DHT, DHT22);
+DHT dht(34, DHT22);
 
 class SensorHumidityTemperature {
 
@@ -27,7 +27,7 @@ class SensorHumidityTemperature {
 
     public:
 
-        SensorHumidityTemperature(int pin_power_reset=7)
+        SensorHumidityTemperature(int pin_power_reset=33)
         {
             pin_power_reset = pin_power_reset;
             nan_counter = 0;
@@ -70,4 +70,3 @@ class SensorHumidityTemperature {
         }
     
 };
-

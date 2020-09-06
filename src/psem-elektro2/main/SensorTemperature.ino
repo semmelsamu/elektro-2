@@ -9,14 +9,14 @@
  * Circuit:
  * DS18B20 connected to Arduino Mega via pins:
  * - VCC: 5V
- * - Data: default 2 + also connected via 4.7kOhm resistor to VCC
+ * - Data: default 30 + also connected via 4.7kOhm resistor to VCC
  * - GND: GND
 */
 
 #include <OneWire.h> 
 #include <DallasTemperature.h>
 
-OneWire oneWire(PIN_DS18B20); 
+OneWire oneWire(30); 
 DallasTemperature sensors(&oneWire);
 
 class SensorTemperature {
