@@ -19,27 +19,15 @@ class Timer {
 
     public:
     
-        String getUnixTime() {
+        unsigned long get_unix_time() {
             DateTime now = rtc.now();
-            return String(now.unixtime());
+            return now.unixtime();
+        }
+
+        float get_temperature() {
+            return rtc.getTemperature();
         }
         
-        void resetTimer() {
-            DateTime now = rtc.now();
-            timerTime = now.unixtime();
-        }
-        
-        int secondsPassed()
-        {
-            DateTime now = rtc.now();
-            return now.unixtime()-timerTime;
-        }
-        
-        void waitUntilTimerHits(int seconds) {
-            while(secondsPassed()<seconds) {
-                delay(1000);
-            }
-        }
 
 };
 

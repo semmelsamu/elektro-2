@@ -27,7 +27,7 @@ class SensorTemperature {
             sensors.begin();
         }
       
-        float getTemperature() {
+        float get_temperature() {
           sensors.requestTemperatures();
           return sensors.getTempCByIndex(0);
         }

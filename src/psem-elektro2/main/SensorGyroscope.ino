@@ -22,14 +22,14 @@ class SensorGyroscope {
 
     public: 
 
-        SensorGyroscope(int pin_x, int pin_y, int pin_z) {
-            pin_x = pin_x;
-            pin_y = pin_y;
-            pin_z = pin_z;
+        SensorGyroscope(int pin_x2=A8, int pin_y2=A9, int pin_z2=A10) {
+            pin_x = pin_x2;
+            pin_y = pin_y2;
+            pin_z = pin_z2;
         }
 
-        float getX() { return (analogRead(pin_x)-363)*1.3; }
-        float getY() { return (analogRead(pin_y)-359)*1.3; }
-        float getZ() { return (analogRead(pin_z)-452)*1; }
+        int get_x() { return (analogRead(pin_x)); }
+        int get_y() { return (analogRead(pin_y)); }
+        int get_z() { return (analogRead(pin_z)); }
   
 };

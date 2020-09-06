@@ -26,7 +26,9 @@ class RemoteBeeper {
     public:
 
         RemoteBeeper(int speaker_pin=11) {
+            Serial.print("Setting up Speaker... ");
             speaker_pin = speaker_pin;
+            Serial.println("Done.");
         }
 
         void handle_actions() {

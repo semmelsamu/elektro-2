@@ -23,18 +23,21 @@ class SensorGas {
 
     public:
 
-        SensorGas(int pin_preheat=3, int pin_nox=A12, int pin_red=A13, int heat_time = 10000) 
+        SensorGas(int pin_preheat=3, int pin_nox=A12, int pin_red=A13, int heat_time = 10) 
         {
             Serial.println("Setting up CJMCU... ");
             
             pinMode(pin_preheat, OUTPUT);
 
-            Serial.print("    Preheating... ");
+            Serial.print("    Preheating");
             digitalWrite(pin_preheat, 1);
-            delay(heat_time);
+            for(int i=0; i<heat_time; i++) {
+                Serial.print(".");
+                delay(1000);
+            }
             digitalWrite(pin_preheat, 0);
             
-            Serial.println("Done.");
+            Serial.println(" Done.");
         }
 
         int get_nox() { return analogRead(pin_nox); }
