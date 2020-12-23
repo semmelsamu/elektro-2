@@ -1,12 +1,13 @@
 /**
  * Main Arduino code.
  * This whole project is made for the stratospheric balloon project "PROJECT JUMBO"
- * By Samuel Kroiß
+ * By Samuel Kroiß & David Schäffler 
  * Contributors: Samuel Kroiß, David Schäffler, Regina Schmid, Benedikt Rosenstetter
+ * Date: 29.11.2020
 **/
 
 /*
- * ALL PINS:
+ * ALL PINS:m
  * 
  * Digital
  * 30: SensorTemperature - Data
