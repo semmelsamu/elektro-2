@@ -1,5 +1,5 @@
 /*
- * RemoteBeeper
+ * RemoteBeeper (discarded)
  * This class lets you control a speaker via a the HC-05 bluetooth module.
  * 
  * See:
@@ -14,7 +14,7 @@
  * Speaker connected to Arduino Mega via Pins:
  * - GND
  * - PIN 46 (default)
-*/
+*
 
 class RemoteBeeper {
     
@@ -48,4 +48,4 @@ class RemoteBeeper {
                 lastVal = BTval;
             }
         }
-};
+}; */

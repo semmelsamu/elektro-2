@@ -9,16 +9,10 @@ SensorTemperature * sensor_temperature;
 SensorUV * sensor_uv;
 Timer * timer;
 
-void tube_impulse(){       //The method has to stay out of the class for it to work
-    counts++;
-    }
-
 void setup() {
     Serial.begin(9600);
     Serial.println("\n\n\n*** Entering setup ***\n");
     
-  
-
     setup_rtc();
     
     sd_controller = new SDController();
@@ -32,7 +26,7 @@ void setup() {
     sensor_uv = new SensorUV();
     timer = new Timer();
 
-    attachInterrupt(0, tube_impulse, FALLING);//this belongs to the "SensorGeigerCounter" and it needs to be here to work in the backround
+    attachInterrupt(0, tube_impulse, FALLING); // GMZ
   
     // Lighting the internal LED 3 times so we know everything started
     Serial.println("\n\n\n*** Setup complete, entering the loop ***\n");

@@ -3,11 +3,11 @@
  * This whole project is made for the stratospheric balloon project "PROJECT JUMBO"
  * By Samuel Kroiß & David Schäffler 
  * Contributors: Samuel Kroiß, David Schäffler, Regina Schmid, Benedikt Rosenstetter
- * Date: 29.11.2020
+ * Date: 23.12.2020
 **/
 
 /*
- * ALL PINS:m
+ * ALL PINS:
  * 
  * Digital
  * 30: SensorTemperature - Data

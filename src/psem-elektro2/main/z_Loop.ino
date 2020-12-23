@@ -1,7 +1,6 @@
 
 void loop() {
 
-
     // Reading the values and printing them to the Serial:
     delay(2000);
 
@@ -38,9 +37,6 @@ void loop() {
     int DHT_temperature = sensor_humidity_temperature->get_temperature();
     Serial.println("DHT_temperature="+String(DHT_temperature)+"°C");
   
-      
-    
-   
 
     // Writing Sensor Values to SD:
     Serial.println("\nLogging to SD Card...");
@@ -72,12 +68,14 @@ void loop() {
     delay(500);
     digitalWrite(LED_BUILTIN, LOW);
 
-     unsigned long currentMillis = millis();
-    if(currentMillis - previousMillis > countingTime){
-    previousMillis = currentMillis;
-    sd_controller->add_to_file("GMZ.log", String(current_time)+":"+String(counts));
-    Serial.print("CPM: ");
-    Serial.println(counts);
-    counts = 0;
-}
+
+    // GMZ
+    unsigned long currentMillis = millis();
+        if(currentMillis - previousMillis > countingTime) {
+        previousMillis = currentMillis;
+        sd_controller->add_to_file("GMZ.log", String(current_time)+":"+String(counts));
+        Serial.print("CPM: ");
+        Serial.println(counts);
+        counts = 0;
+    }
 }

@@ -1,6 +1,6 @@
 /* 
  * SensorGeierCounter
- * This class reads out the action of the GeigerMuellerCounter 
+ * It reads out the action of the Geiger-Müller-Counter 
  *  
  * See: 
  * https://create.arduino.cc/projecthub/EDUcentrum/geiger-counter-with-arduino-uno-2cf621
@@ -10,7 +10,6 @@
  * -GND: GND
  * -VCC: 5V
  * -VIN: DIGITAL 2
- *
 */
 
 #include <SPI.h>
@@ -19,14 +18,6 @@
 unsigned long counts=0;            
 unsigned long previousMillis;  
 
-
-
-
-
-class SensorGeigerCounter {
-    
-
-  public:
-  
-  
-};
+void tube_impulse(){
+    counts++;
+}
